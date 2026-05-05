@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Groups - Peer Evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <div class="brand">
+        <img
+          class="brand__logo"
+          src="./smu_logo.png"
+          alt="Singapore Management University logo"
+        />
+        <div class="brand__text">
+          <div class="brand__title">SMU</div>
+          <div class="brand__subtitle">Edit Groups</div>
+        </div>
+      </div>
+      <div class="dashboard-header__right">
+        <button id="backBtn" class="logout-btn">Back to Dashboard</button>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-container import-roster-container">
+
+        <div class="eg-body">
+
+          <!-- Sidebar -->
+          <aside class="eg-sidebar">
+
+            <div class="eg-sidebar-block">
+              <span class="ir-sidebar-label">Course</span>
+              <select id="courseSelect" class="ir-pill-select">
+                <option value="">Loading…</option>
+              </select>
+            </div>
+
+            <div class="eg-sidebar-block">
+              <span class="ir-sidebar-label">Search Name</span>
+              <input id="searchInput" type="text" class="eg-pill-input" placeholder="Type a name…" />
+            </div>
+
+            <div class="eg-sidebar-block">
+              <span class="ir-sidebar-label">Filter</span>
+              <select id="filterSelect" class="ir-pill-select">
+                <option value="all">All Students</option>
+                <option value="assigned">Assigned</option>
+                <option value="unassigned">Unassigned</option>
+              </select>
+            </div>
+
+            <div class="eg-sidebar-block">
+              <span class="ir-sidebar-label">Sort</span>
+              <select id="sortSelect" class="ir-pill-select">
+                <option value="name">By Name</option>
+                <option value="group">By Group</option>
+              </select>
+            </div>
+
+            <hr class="ir-divider" />
+
+            <div class="eg-sidebar-block">
+              <span class="ir-sidebar-label">New Group</span>
+              <div class="eg-new-group-row">
+                <input id="newGroupInput" type="text" class="eg-pill-input" placeholder="Group name…" />
+                <button id="addGroupBtn" class="ir-action-btn eg-add-group-btn">+ Add</button>
+              </div>
+              <div id="groupChips" class="eg-group-chips"></div>
+            </div>
+
+          </aside>
+
+          <!-- Main table -->
+          <div class="ir-table-wrap">
+            <table class="ir-table" id="groupsTable">
+              <thead>
+                <tr>
+                  <th class="ir-th-roster" colspan="2">Create Student Groups</th>
+                </tr>
+                <tr>
+                  <th style="text-align:left; padding-left:24px;">Name</th>
+                  <th style="text-align:center;">Group</th>
+                </tr>
+              </thead>
+              <tbody id="groupsTableBody">
+                <tr id="egEmptyRow">
+                  <td colspan="2" class="ir-empty">Select a course to load students.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <div class="ir-save-bar">
+          <button id="saveBtn" class="ir-save-btn">Save Changes</button>
+          <span id="saveStatus" class="ir-save-status"></span>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./edit-groups.js"></script>
+  </body>
+</html>

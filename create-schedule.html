@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Evaluation Schedule - Peer Evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <div class="brand">
+        <img class="brand__logo" src="./smu_logo.png" alt="Singapore Management University logo" />
+        <div class="brand__text">
+          <div class="brand__title">SMU</div>
+          <div class="brand__subtitle">Evaluation Schedule</div>
+        </div>
+      </div>
+      <div class="dashboard-header__right">
+        <button id="backBtn" class="logout-btn">Back to Dashboard</button>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-container import-roster-container">
+
+        <!-- Course selector -->
+        <div class="cs-top-bar">
+          <label class="cs-top-label">Course</label>
+          <select id="courseSelect" class="ir-pill-select cs-course-select">
+            <option value="">Loading…</option>
+          </select>
+          <div class="cs-duration-wrap">
+            <label class="cs-top-label">Duration</label>
+            <select id="durationSelect" class="ir-pill-select cs-course-select">
+              <option value="1">1 day</option>
+              <option value="3">3 days</option>
+              <option value="7" selected>1 week</option>
+              <option value="14">2 weeks</option>
+              <option value="30">1 month</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3-column layout -->
+        <div class="cs-columns">
+
+          <!-- Calendar -->
+          <div class="cs-col">
+            <h3 class="cs-col-title">Calendar</h3>
+            <div class="cs-panel">
+              <div id="calendarWidget"></div>
+            </div>
+          </div>
+
+          <!-- Roster (groups) -->
+          <div class="cs-col">
+            <h3 class="cs-col-title">Roster</h3>
+            <div class="cs-panel cs-panel--scroll" id="rosterPanel">
+              <p class="cs-hint">Select a course first.</p>
+            </div>
+          </div>
+
+          <!-- Time slots -->
+          <div class="cs-col">
+            <h3 class="cs-col-title">Time</h3>
+            <div class="cs-panel cs-panel--scroll" id="timePanel"></div>
+          </div>
+
+        </div>
+
+        <!-- Selection summary + create -->
+        <div class="cs-create-bar">
+          <div class="cs-summary">
+            <span id="summaryOpens" class="cs-summary-item">Opens: —</span>
+            <span id="summaryDue"   class="cs-summary-item">Due: —</span>
+            <span id="summaryGroup" class="cs-summary-item">Group: —</span>
+          </div>
+          <button id="createBtn" class="ir-save-btn">Create Schedule</button>
+          <span id="createStatus" class="ir-save-status"></span>
+        </div>
+
+        <!-- Existing schedules -->
+        <div class="cs-existing">
+          <h3 class="cs-existing-title">Existing Schedules</h3>
+          <div id="existingSchedules" class="cs-sched-list">
+            <p class="cs-hint">Select a course to see schedules.</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./create-schedule.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__left">
+        <div class="brand">
+          <img
+            class="brand__logo"
+            src="./smu_logo.png"
+            alt="Singapore Management University logo"
+          />
+        </div>
+      </div>
+
+      <div class="topbar__center">Evalio System</div>
+
+      <button class="menu" type="button" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main class="page">
+      <div class="page__inner">
+        <h1 class="page__title">SUBMIT</h1>
+
+        <section class="submitGrid" aria-label="Submit choices">
+          <button class="bigChoice" id="yesBtn" type="button">YES</button>
+          <button class="bigChoice" id="noBtn" type="button">NO</button>
+        </section>
+        <p class="hint" id="statusText" role="status" aria-live="polite"></p>
+      </div>
+    </main>
+
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal__backdrop" data-close="true"></div>
+      <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal__title" id="modalTitle">Congrats!</div>
+        <div class="modal__body">Peer evaluation done.</div>
+        <div class="modal__actions">
+          <button class="btn" id="closeModalBtn" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./submit.js"></script>
+  </body>
+</html>

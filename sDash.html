@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Evaluations - Peer Evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="shome-header">
+      <div class="shome-brand">
+        <img src="./smu_logo.png" alt="SMU logo" class="shome-logo" />
+        <div class="shome-brand-text">
+          <div class="shome-brand-name">SMU</div>
+          <div class="shome-brand-sub">Singapore Management University</div>
+        </div>
+      </div>
+      <div class="shome-title">Evalio System</div>
+      <button class="shome-hamburger" onclick="window.location.href='sHome.html'" aria-label="Back to home">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-container pdash-container">
+
+        <div class="sd-page">
+          <h1 class="ir-page-title">My Peer Evaluations</h1>
+
+          <div id="evalSections">
+            <p class="cs-hint" style="text-align:center; padding: 40px;">Loading your evaluations…</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./sDash.js"></script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peer Evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar__left">
+        <div class="brand">
+          <img 
+            class="brand__logo" 
+            src="./smu_logo.png" 
+            alt="Singapore Management University logo" 
+          />
+          <div class="brand__text">
+            <div class="brand__title">SMU</div>
+            <div class="brand__subtitle">Singapore Management University</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="topbar__center">Evalio System</div>
+
+      <div class="topbar__right">
+        <button onclick="window.location.href='sHome.html'" class="btn">Back to Dashboard</button>
+        <button id="logoutBtn" class="btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="page__inner">
+        <h1 class="page__title">Peer Evaluation</h1>
+
+        <section class="progressRow" aria-label="Progress">
+          <div class="progressRow__label" aria-hidden="true">%</div>
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="progress__fill" id="progressFill"></div>
+          </div>
+          <div class="progressRow__value" id="progressValue">0%</div>
+        </section>
+
+        <section class="card" aria-label="Questions">
+          <div class="card__scroll" id="questionContainer"></div>
+        </section>
+
+        <footer class="names">
+          <div class="names__item">
+            <div class="names__label">Evaluator</div>
+            <div class="names__value" id="fromName">Student A</div>
+          </div>
+          <div class="names__item names__item--right">
+            <div class="names__label">Evaluatee</div>
+            <select class="names__select" id="evaluateeSelect" aria-label="Select evaluatee"></select>
+          </div>
+        </footer>
+        <div class="actions">
+          <button class="nextBtn" id="nextBtn" type="button" disabled>Next</button>
+        </div>
+      </div>
+    </main>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./peer-eval.js"></script>
+    <script>
+      // Check authentication and role on page load
+      window.authUtils.checkAuthAndRole('student');
+    </script>
+  </body>
+</html>

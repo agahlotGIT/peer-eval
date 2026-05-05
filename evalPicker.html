@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peer Evaluations - Evalio System</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="shome-body">
+    <header class="shome-header">
+      <div class="shome-brand">
+        <img src="./smu_logo.png" alt="SMU logo" class="shome-logo" />
+        <div class="shome-brand-text">
+          <div class="shome-brand-name">SMU</div>
+          <div class="shome-brand-sub">Singapore Management University</div>
+        </div>
+      </div>
+      <div class="shome-title">Evalio System</div>
+      <button class="shome-hamburger" onclick="window.location.href='sHome.html'" aria-label="Back to home">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="picker-main">
+      <h1 class="picker-heading">Peer Evaluations</h1>
+      <div id="evalList" class="picker-list">
+        <p class="shome-hint">Loading…</p>
+      </div>
+    </main>
+
+    <footer class="shome-footer"></footer>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./evalPicker.js"></script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Evalio System</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="shome-body">
+    <header class="shome-header">
+      <div class="shome-brand">
+        <img src="./smu_logo.png" alt="SMU logo" class="shome-logo" />
+        <div class="shome-brand-text">
+          <div class="shome-brand-name">SMU</div>
+          <div class="shome-brand-sub">Singapore Management University</div>
+        </div>
+      </div>
+      <div class="shome-title">Evalio System</div>
+      <button class="shome-hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="shome-main">
+      <!-- Left: Courses -->
+      <section class="shome-col">
+        <h2 class="shome-col-title">Courses</h2>
+        <div class="shome-courses-box">
+          <div id="coursesList">
+            <p class="shome-hint">Loading…</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Center: Overview -->
+      <section class="shome-col">
+        <h2 class="shome-col-title shome-center-title">Overview</h2>
+        <div class="shome-overview-box">
+          <a href="sDash.html" class="shome-ov-card">Peer<br />Evaluation</a>
+          <a href="timingCheck.html" class="shome-ov-card">Timing<br />Check</a>
+          <a href="tasksTodo.html" class="shome-ov-card">Tasks<br />To-Do</a>
+          <a href="gloDash.html" class="shome-ov-card">GLO<br />Dashboard</a>
+        </div>
+      </section>
+
+      <!-- Right: Calendar + To-Do -->
+      <aside class="shome-col shome-right-col">
+        <div class="shome-cal-box">
+          <div class="shome-cal-header">
+            <button class="shome-cal-nav" id="calPrev">&#8249;</button>
+            <span class="shome-cal-month-label" id="calMonthLabel"></span>
+            <button class="shome-cal-nav" id="calNext">&#8250;</button>
+          </div>
+          <div class="shome-cal-days" id="calDays"></div>
+          <div class="shome-cal-grid" id="calGrid"></div>
+        </div>
+
+        <div class="shome-todo-section">
+          <h3 class="shome-col-title shome-todo-heading">To-Do List</h3>
+          <div class="shome-todo-box">
+            <div class="shome-todo-card" id="todoList">
+              <p class="shome-hint">Loading…</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="shome-footer"></footer>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./sHome.js"></script>
+  </body>
+</html>

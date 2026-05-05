@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professor Dashboard - Peer Evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <div class="brand">
+        <img
+          class="brand__logo"
+          src="./smu_logo.png"
+          alt="Singapore Management University logo"
+        />
+        <div class="brand__text">
+          <div class="brand__title">SMU</div>
+          <div class="brand__subtitle">Professor Dashboard</div>
+        </div>
+      </div>
+      <div class="dashboard-header__right">
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-container dashboard-split">
+        <section class="roster-panel">
+          <h1>Student Roster</h1>
+          <button id="loadStudentsBtn" class="load-btn">Load Student Roster</button>
+          <div id="studentList" class="student-list">
+            <!-- Students will be listed here -->
+          </div>
+        </section>
+
+        <aside class="details-panel">
+          <div class="details-card">
+            <h2>Selected Student</h2>
+            <p id="selectedStudentText">No student selected</p>
+            <div class="selected-id" id="selectedStudentId">ID: —</div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>
+

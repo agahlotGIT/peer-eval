@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timing Check - Evalio System</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="shome-body">
+    <header class="shome-header">
+      <div class="shome-brand">
+        <img src="./smu_logo.png" alt="SMU logo" class="shome-logo" />
+        <div class="shome-brand-text">
+          <div class="shome-brand-name">SMU</div>
+          <div class="shome-brand-sub">Singapore Management University</div>
+        </div>
+      </div>
+      <div class="shome-title">Evalio System</div>
+      <button class="shome-hamburger" onclick="window.location.href='sHome.html'" aria-label="Back to home">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="tc-main">
+      <div class="tc-toolbar">
+        <button class="tc-nav-btn" id="prevWeek">&#8249;</button>
+        <h1 class="tc-week-label" id="weekLabel"></h1>
+        <button class="tc-nav-btn" id="nextWeek">&#8250;</button>
+      </div>
+
+      <div class="tc-calendar">
+        <!-- Day headers -->
+        <div class="tc-header-grid">
+          <div class="tc-day-header" id="hdr0"></div>
+          <div class="tc-day-header" id="hdr1"></div>
+          <div class="tc-day-header" id="hdr2"></div>
+          <div class="tc-day-header" id="hdr3"></div>
+          <div class="tc-day-header" id="hdr4"></div>
+          <div class="tc-day-header" id="hdr5"></div>
+          <div class="tc-day-header" id="hdr6"></div>
+        </div>
+
+        <!-- Divider -->
+        <div class="tc-divider"></div>
+
+        <!-- Event rows -->
+        <div class="tc-events-grid" id="eventsGrid">
+          <p class="tc-empty" id="emptyMsg">Loading…</p>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="tc-legend">
+        <span class="tc-legend-item tc-legend--open">Open</span>
+        <span class="tc-legend-item tc-legend--upcoming">Upcoming</span>
+        <span class="tc-legend-item tc-legend--closed">Closed</span>
+      </div>
+    </main>
+
+    <footer class="shome-footer"></footer>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./timingCheck.js"></script>
+  </body>
+</html>

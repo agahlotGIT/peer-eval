@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Evaluation Status - Peer Evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <div class="brand">
+        <img
+          class="brand__logo"
+          src="./smu_logo.png"
+          alt="Singapore Management University logo"
+        />
+        <div class="brand__text">
+          <div class="brand__title">SMU</div>
+          <div class="brand__subtitle">Evaluation Status</div>
+        </div>
+      </div>
+      <div class="dashboard-header__right">
+        <button id="backBtn" class="logout-btn">Back to Dashboard</button>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-container eval-status-container">
+
+        <!-- Overview Stats -->
+        <section class="status-overview">
+          <h1>Peer Evaluation Status Overview</h1>
+          <div id="statsContainer" class="stats-grid"></div>
+        </section>
+
+        <!-- Tab navigation -->
+        <div class="eval-tabs-nav">
+          <button class="eval-tab-btn active" data-tab="roster">Student Roster</button>
+          <button class="eval-tab-btn" data-tab="overall">Overall Statistics</button>
+        </div>
+
+        <!-- ── Tab: Student Roster ── -->
+        <div class="eval-tab-panel" id="tabRoster">
+          <div class="status-split">
+
+            <!-- Left: Student Roster -->
+            <section class="roster-section">
+              <div class="roster-header-row">
+                <h2>Student Roster</h2>
+                <button id="loadRosterBtn" class="load-btn">Reload</button>
+              </div>
+              <div class="roster-filters">
+                <input id="studentSearch" type="text" class="roster-search" placeholder="Search by name or email…" />
+                <select id="courseFilter" class="roster-select">
+                  <option value="">All Courses</option>
+                </select>
+                <select id="groupFilter" class="roster-select">
+                  <option value="">All Groups</option>
+                </select>
+              </div>
+              <div id="rosterCount" class="roster-count"></div>
+              <div id="studentRosterList" class="student-roster-list">
+                <p class="no-data">Loading…</p>
+              </div>
+            </section>
+
+            <!-- Right: Student Stats -->
+            <section class="stats-section" id="studentStatsSection" style="display: none;">
+              <div class="stats-header">
+                <h2 id="selectedStudentName">Select a Student</h2>
+                <button id="backStudentBtn" class="back-btn">← Back to Roster</button>
+              </div>
+
+              <div class="charts-container">
+                <div class="chart-card">
+                  <h3>Peer Feedback by Criterion</h3>
+                  <div class="table-wrapper">
+                    <table id="feedbackTable" class="feedback-table">
+                      <thead>
+                        <tr>
+                          <th>Course</th>
+                          <th>Group</th>
+                          <th>Criterion</th>
+                          <th>Feedback</th>
+                        </tr>
+                      </thead>
+                      <tbody id="feedbackTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="chart-card">
+                  <h3>Average Peer Evaluation Score by Criterion</h3>
+                  <div class="chart-card-canvas-wrap">
+                    <canvas id="averageScoreChart"></canvas>
+                  </div>
+                </div>
+
+                <div class="chart-card">
+                  <h3>Submitted vs Pending by Group</h3>
+                  <div class="chart-card-canvas-wrap">
+                    <canvas id="groupStatusChart"></canvas>
+                  </div>
+                </div>
+
+                <div class="chart-card" style="grid-column: 1 / -1;">
+                  <h3>Students with Pending Peer Evaluations</h3>
+                  <div class="table-wrapper">
+                    <table id="pendingTable" class="pending-table">
+                      <thead>
+                        <tr>
+                          <th>Student Name</th>
+                          <th>Course</th>
+                          <th>Group</th>
+                          <th>Due Date</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="pendingTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+          </div>
+        </div>
+
+        <!-- ── Tab: Overall Statistics ── -->
+        <div class="eval-tab-panel" id="tabOverall" style="display:none">
+
+          <!-- Filter panel -->
+          <div class="os-filter-panel">
+            <div class="os-filter-row">
+              <label class="os-filter-label" for="osCourseSelect">Course</label>
+              <select id="osCourseSelect" class="roster-select os-course-select">
+                <option value="">Select a course…</option>
+              </select>
+            </div>
+
+            <div class="os-filter-row" id="osGroupsRow" style="display:none">
+              <label class="os-filter-label">Groups</label>
+              <div id="osGroupPills" class="os-group-pills"></div>
+            </div>
+
+            <div class="os-filter-row os-filter-actions">
+              <button id="osLoadBtn" class="load-btn" disabled>Load Charts</button>
+              <span id="osFilterHint" class="os-hint">Select a course to begin</span>
+            </div>
+          </div>
+
+          <!-- Charts (hidden until loaded) -->
+          <div id="osChartsArea" style="display:none">
+            <div class="os-charts-grid">
+              <div class="chart-card">
+                <h3 id="osSubmissionsTitle">Peer Evaluation Submissions by Group</h3>
+                <div class="chart-card-canvas-wrap">
+                  <canvas id="osSubmissionsChart"></canvas>
+                </div>
+              </div>
+
+              <div class="chart-card">
+                <h3 id="osCompletionTitle">Completion Rate by Group</h3>
+                <div class="chart-card-canvas-wrap">
+                  <canvas id="osCompletionChart"></canvas>
+                </div>
+              </div>
+
+              <div class="chart-card os-pie-card">
+                <h3>Submission Status Breakdown</h3>
+                <div class="os-pie-wrap">
+                  <canvas id="osStatusPie"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./evaluation-status.js"></script>
+  </body>
+</html>

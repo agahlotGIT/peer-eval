@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import Course Roster - Peer Evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <div class="brand">
+        <img
+          class="brand__logo"
+          src="./smu_logo.png"
+          alt="Singapore Management University logo"
+        />
+        <div class="brand__text">
+          <div class="brand__title">SMU</div>
+          <div class="brand__subtitle">Import Roster</div>
+        </div>
+      </div>
+      <div class="dashboard-header__right">
+        <button id="backBtn" class="logout-btn">Back to Dashboard</button>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-container import-roster-container">
+
+        <h1 class="ir-page-title">Import Course Roster</h1>
+
+        <div class="ir-top-actions">
+          <button id="addRowBtn" class="ir-action-btn">Add</button>
+          <button id="importBtn" class="ir-action-btn">Import</button>
+          <button id="deleteBtn" class="ir-action-btn">Delete</button>
+        </div>
+        <input type="file" id="csvFileInput" accept=".csv" style="display:none;" />
+
+        <div class="ir-body">
+
+          <!-- Sidebar -->
+          <aside class="ir-sidebar">
+            <div class="ir-upload-block">
+              <span class="ir-sidebar-label">Upload CSV File</span>
+              <button id="uploadTriggerBtn" class="ir-pill-btn">Choose File</button>
+              <span id="uploadFileName" class="ir-file-name">No file chosen</span>
+            </div>
+
+            <hr class="ir-divider" />
+
+            <div class="ir-course-block">
+              <span class="ir-sidebar-label">Course</span>
+              <select id="courseSelect" class="ir-pill-select">
+                <option value="">Loading…</option>
+              </select>
+            </div>
+          </aside>
+
+          <!-- Roster Table -->
+          <div class="ir-table-wrap">
+            <table class="ir-table" id="rosterTable">
+              <thead>
+                <tr>
+                  <th class="ir-th-roster" colspan="4">ROSTER</th>
+                </tr>
+                <tr>
+                  <th class="ir-th-check">
+                    <input type="checkbox" id="selectAllChk" />
+                  </th>
+                  <th>Student ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody id="rosterTableBody">
+                <tr id="emptyRow">
+                  <td colspan="4" class="ir-empty">
+                    Select a course to load its roster, or add rows manually.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+        <div class="ir-save-bar">
+          <button id="saveBtn" class="ir-save-btn">Save Changes</button>
+          <span id="saveStatus" class="ir-save-status"></span>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./import-roster.js"></script>
+  </body>
+</html>

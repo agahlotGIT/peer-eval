@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professor Dashboard - Peer Evaluation</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <header class="dashboard-header">
+      <div class="brand">
+        <img
+          class="brand__logo"
+          src="./smu_logo.png"
+          alt="Singapore Management University logo"
+        />
+        <div class="brand__text">
+          <div class="brand__title">SMU</div>
+          <div class="brand__subtitle">Professor Dashboard</div>
+        </div>
+      </div>
+      <div class="dashboard-header__right">
+        <span id="professorName" class="professor-name"></span>
+        <button id="logoutBtn" class="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard-main">
+      <div class="dashboard-container pdash-container">
+
+        <!-- Left: stats + action cards -->
+        <div class="professor-dashboard">
+          <h1>Welcome to Your Professor Dashboard</h1>
+          <p class="dashboard-subtitle">Manage your peer evaluation system</p>
+
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <h4>Total Students</h4>
+              <div class="stat-number" id="totalStudents">—</div>
+            </div>
+            <div class="stat-card">
+              <h4>Active Evaluations</h4>
+              <div class="stat-number" id="activeEvaluations">—</div>
+            </div>
+            <div class="stat-card">
+              <h4>Completion Rate</h4>
+              <div class="stat-number" id="completionRate">—%</div>
+            </div>
+          </div>
+
+          <div class="dashboard-actions">
+            <div class="action-card" onclick="navigateTo('import-roster')">
+              <div class="action-icon">📋</div>
+              <h3>Import Student Roster</h3>
+              <p>Upload and manage your class roster</p>
+            </div>
+            <div class="action-card" onclick="navigateTo('edit-groups')">
+              <div class="action-icon">👥</div>
+              <h3>Edit Groups</h3>
+              <p>Create and modify student groups</p>
+            </div>
+            <div class="action-card" onclick="navigateTo('create-schedule')">
+              <div class="action-icon">📅</div>
+              <h3>Create Evaluation Schedule</h3>
+              <p>Set up peer evaluation timings</p>
+            </div>
+            <div class="action-card" onclick="navigateTo('evaluation-status')">
+              <div class="action-icon">📊</div>
+              <h3>Evaluation Status</h3>
+              <p>Monitor completion progress</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: charts -->
+        <aside class="pdash-charts-panel">
+
+          <div class="pdash-chart-card">
+            <h3 class="pdash-chart-title">Peer Evaluations Scheduled by Week</h3>
+            <div class="pdash-chart-wrap">
+              <canvas id="weeklyChart"></canvas>
+            </div>
+          </div>
+
+          <div class="pdash-chart-card">
+            <h3 class="pdash-chart-title">Total Evaluations Scheduled by Professor</h3>
+            <div class="pdash-chart-wrap">
+              <canvas id="professorChart"></canvas>
+            </div>
+          </div>
+
+          <div class="pdash-chart-card">
+            <h3 class="pdash-chart-title">Professors with No Evaluations Scheduled</h3>
+            <div id="noEvalsTableWrap">
+              <p class="no-data">Loading…</p>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+    </main>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./pDash.js"></script>
+  </body>
+</html>

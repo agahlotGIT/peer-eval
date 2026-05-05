@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasks To-Do - Evalio System</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="shome-body">
+    <header class="shome-header">
+      <div class="shome-brand">
+        <img src="./smu_logo.png" alt="SMU logo" class="shome-logo" />
+        <div class="shome-brand-text">
+          <div class="shome-brand-name">SMU</div>
+          <div class="shome-brand-sub">Singapore Management University</div>
+        </div>
+      </div>
+      <div class="shome-title">Evalio System</div>
+      <button class="shome-hamburger" onclick="window.location.href='sHome.html'" aria-label="Back to home">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="tasks-main">
+      <div class="tasks-header-row">
+        <h1 class="tasks-heading">Tasks To-Do</h1>
+        <span class="tasks-count" id="taskCount"></span>
+      </div>
+      <div class="tasks-list" id="taskList">
+        <p class="shome-hint">Loading…</p>
+      </div>
+    </main>
+
+    <footer class="shome-footer"></footer>
+
+    <script src="./node_modules/@supabase/supabase-js/dist/umd/supabase.js"></script>
+    <script src="./supabaseClient.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./tasksTodo.js"></script>
+  </body>
+</html>
